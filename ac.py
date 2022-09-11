@@ -15,7 +15,7 @@ mysql.init_app(app)
 def main():
     return render_template('form.html')
 
-@app.route('/gravar', methods=['POST', 'GET'])
+@app.route('/form', methods=['POST', 'GET'])
 def gravar():
     nome = request.form['nome']
     cpf = request.form['cpf']
