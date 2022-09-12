@@ -15,7 +15,7 @@ mysql.init_app(app)
 def main():
     return render_template('usuario.html')
 
-@app.route('/usuario', methods=['POST','GET'])
+@app.route('/gravar', methods=['POST','GET'])
 def gravar():
   nome = request.form['nome']
   cpf = request.form['cpf']
@@ -35,7 +35,7 @@ def listar():
   cursor.execute('select user_name, user_cpf, user_endereco from tbl_user')
   data = cursor.fetchall()
   conn.commit()
-  return render_template('listar.html', datas=data)
+  return render_template('lista.html', datas=data)
 
 if __name__ == "__main__": 
     port = int(os.environ.get("PORT", 5008))
