@@ -4,6 +4,7 @@ from flaskext.mysql import MySQL
 
 mysql = MySQL()
 app = Flask(__name__, template_folder="Templates")
+#app = Flask(__name__)
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'mudar123'
@@ -23,7 +24,7 @@ def gravar():
   if nome and preco and categoria:
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute('insert into tbl_produto (produto_name, produto_preco, produto_categoria) VALUES (%s, %s, %s)', (nome, preco, categoria))
+    cursor.execute('insert into tbl_produto (produto_nome, produto_preco, produto_categoria) VALUES (%s, %s, %s)', (nome, preco, categoria))
     conn.commit()
   return render_template('produto.html')
 
@@ -32,10 +33,10 @@ def gravar():
 def listar():
   conn = mysql.connect()
   cursor = conn.cursor()
-  cursor.execute('select produto_name, produto_preco, produto_categoria from tbl_produto')
+  cursor.execute('select produto_name, produto_preco, produto_endereco from tbl_produto')
   data = cursor.fetchall()
   conn.commit()
-  return render_template('listar.html', datas=data)
+  return render_template('lista.html', datas=data)
 
 if __name__ == "__main__": 
     port = int(os.environ.get("PORT", 5004))
