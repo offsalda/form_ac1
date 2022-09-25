@@ -2,13 +2,13 @@ services:
  web:
    build: .
    working_dir: /data
-   command: python usuario.py
+   command: python produto.py
    links:
     - db
    volumes:
     - .:/data
    ports:
-    - "5008:5008"
+    - "5006:5006"
 
  db:
    image: mysql:5.7
