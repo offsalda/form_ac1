@@ -33,7 +33,7 @@ def gravar():
 def listar():
   conn = mysql.connect()
   cursor = conn.cursor()
-  cursor.execute('select produto_name, produto_preco, produto_endereco from tbl_produto')
+  cursor.execute('select produto_nome, produto_preco, produto_endereco from tbl_produto')
   data = cursor.fetchall()
   conn.commit()
   return render_template('lista.html', datas=data)
