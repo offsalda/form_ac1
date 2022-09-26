@@ -36,7 +36,7 @@ def listar():
   cursor.execute('select produto_nome, produto_preco, produto_categoria from tbl_produto')
   data = cursor.fetchall()
   conn.commit()
-  return render_template('lista.html', datas=data)
+  return render_template('listar.html', datas=data)
 
 if __name__ == "__main__": 
     port = int(os.environ.get("PORT", 5004))
